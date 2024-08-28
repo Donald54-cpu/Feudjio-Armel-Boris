@@ -136,7 +136,7 @@
                 .Compétences-list li{
                     margin-left: 1rem;
                     margin-right: 1rem;
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                 }
 
                 .Niveaux-de-langue{
@@ -174,6 +174,7 @@
                     flex: 1;
                     display: flex;
                     flex-direction: column;
+                    font-size: xx-small;
                     justify-content: center;
                     max-width: 600px;
                     text-align: left;
@@ -940,7 +941,7 @@
                             <img src="images/photos/projets/projet9/I16.jpg" alt="Project 8 Image 16" class="work-img" onclick="openModal(this)">
                             <img src="images/photos/projets/projet9/I17.jpg" alt="Project 8 Image 17" class="work-img" onclick="openModal(this)">
                             <img src="images/photos/projets/projet9/I18.jpg" alt="Project 8 Image 18" class="work-img" onclick="openModal(this)">
-                            <div class="video-thumbnail" onclick="openVideoModal()">
+                            <div id="video-modal-8" class="video-thumbnail" onclick="openVideoModal()">
                                 <img id="your-thumbnail-id" src="images/photos/projets/projet9/I20.jpg" alt="Video vignette" class="work-img">
                                 <span class="play-icon">&#9658;</span> <!-- Icône de lecture -->
                             </div>
@@ -1004,15 +1005,15 @@
                             <img src="images/photos/projets/projet11/K8.jpg" alt="Project 10 Image 8" class="work-img" onclick="openModal(this)">
                             <img src="images/photos/projets/projet11/K9.jpg" alt="Project 10 Image 9" class="work-img" onclick="openModal(this)">
                             <img src="images/photos/projets/projet11/K10.jpg" alt="Project 10 Image 10" class="work-img" onclick="openModal(this)">
-                            <div class="video-thumbnail" onclick="openVideoModal()">
+                            <div id="video-modal-11-1" class="video-thumbnail" onclick="openVideoModal()">
                                 <img id="video-thumbnail-id1" src="images/photos/projets/projet11/K11.mp4" alt="Video vignette" class="work-img">
                                 <span class="play-icon">&#9658;</span> <!-- Icône de lecture -->
                             </div>
-                            <div class="video-thumbnail2" onclick="openVideoModal()">
+                            <div id="video-modal-11-2" class="video-thumbnail2" onclick="openVideoModal()">
                                 <img id="your-thumbnail-id2" src="images/photos/projets/projet11/K12.mp4" alt="Video vignette" class="work-img">
                                 <span class="play-icon">&#9658;</span> <!-- Icône de lecture -->
                             </div>
-                            <div class="video-thumbnail" onclick="openVideoModal()">
+                            <div id="video-modal-11-3" class="video-thumbnail" onclick="openVideoModal()">
                                 <img id="your-thumbnail-id3" src="images/photos/projets/projet11/K13.mp4" alt="Video vignette" class="work-img">
                                 <span class="play-icon">&#9658;</span> <!-- Icône de lecture -->
                             </div>
@@ -1156,20 +1157,22 @@
                     modalImg.classList.toggle('zoomed');
                 }
             
-                function openVideoModal() {
-                    const modal = document.getElementById('video-modal');
-                    const video = document.getElementById('modal-video');
+                function openVideoModal(modalId, videoId) {
+                    const modal = document.getElementById(modalId);
+                    const video = document.getElementById(videoId);
                     modal.style.display = "flex";
                     video.play(); // Démarre la vidéo automatiquement
                 }
             
-                function closeVideoModal() {
-                    const modal = document.getElementById('video-modal');
-                    const video = document.getElementById('modal-video');
+                function closeVideoModal(modalId) {
+                    const modal = document.getElementById(modalId);
+                    const video = document.getElementById(modalId.replace('video-modal' , 'modal-video'));
                     modal.style.display = "none";
                     video.pause(); // Met en pause la vidéo
                     video.currentTime = 0; // Réinitialise la vidéo au début
                 }
+
+
 
                 document.getElementById('your-thumbnail-id').addEventListener('click', openVideoModal);
                 document.getElementById('your-thumbnail-id1').addEventListener('click', openVideoModal);
